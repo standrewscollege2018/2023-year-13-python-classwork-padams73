@@ -127,7 +127,26 @@ def add_student():
     # Create new student
     Student(name, age, phone, student_classes)
 
+def generate_students():
+    ''' Function imports students from csv file '''
+
+    import csv
+    with open('myRandomStudents.csv', newline='') as csvfile:
+        filereader = csv.reader(csvfile)
+        for line in filereader:
+            classes = []
+            i = 3
+            while i in range(3,8):
+                classes.append(line[i])
+                i += 1
+            Student(line[0], int(line[1]), line[2], classes)
 
 
-add_student()
+# Create a function that gets the user to enter a class code, then
+# returns a list of all students who are in that class, along with a 
+# count of how many there are
+
+
+
+generate_students()
 search()
