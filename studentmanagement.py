@@ -97,7 +97,7 @@ def display_all():
     ''' Display names of all students '''
 
     for s in students:
-        s.display_my_info()
+        print(s.get_name())
 
 def add_student():
     ''' User can add a new student '''
@@ -145,8 +145,33 @@ def generate_students():
 # Create a function that gets the user to enter a class code, then
 # returns a list of all students who are in that class, along with a 
 # count of how many there are
+def class_search():
+    ''' Return class lists '''
 
+    class_to_search = input("Enter class code: ")
+    # Set counter to record how many students are found
+    count = 0
+    for s in students:
+        if class_to_search in s.get_classes():
+            count += 1
+            print(s.get_name())
+    print(f"{count} students found")
 
-
+# Import all students from csv
 generate_students()
-search()
+
+# Start program running and show main menu
+run_program = True
+while run_program == True:
+    print("Student Management System")
+    print("1. Display all students")
+    print("2. Search for student")
+    print("3. Get class list")
+    print("4. Add student")
+    print("5. Quit program")
+    selection = int(input())
+    if selection == 1:
+        display_all()
+    elif selection == 2:
+        search()
+    
