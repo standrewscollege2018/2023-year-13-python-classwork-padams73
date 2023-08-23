@@ -16,11 +16,16 @@ def add_name():
     ''' Add new name to the list '''
 
     # Popup checks if the user actually wants to enter that name
-    if messagebox.askyesno("Double check!", "Are you sure you want to add this name?"):
+    # First parameter is the title
+    # Second parameter is the text that appears
+    if messagebox.askyesno("Alert!", "Are you sure you want to enter this name?"):
         names.append(name_to_enter.get())
         populate_listbox()
+        # Popup appears to confirm name has been entered
+        messagebox.showinfo("Success!", "Name has been entered")
         # Clear the entry field
         name_to_enter.set("")
+
 
 def populate_listbox():
     ''' reload and repopulate the listbox '''
