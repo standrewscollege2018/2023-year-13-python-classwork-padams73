@@ -23,6 +23,7 @@ class Student:
 
         # Add the new student to the students list
         students.append(self)
+        student_names.append(name)
     
     
     def get_name(self):
@@ -71,6 +72,7 @@ class Student:
 
 # list to store all students
 students = []
+student_names = []
 
 # Create students
 Student("John Smith", 18, "027123123", ["DIGI", "MATH"])
@@ -157,6 +159,17 @@ def class_search():
             print(s.get_name())
     print(f"{count} students found")
 
+def delete_student():
+    ''' Delete student '''
+
+    # Get name of student to delete
+    name = input("Enter name of student to delete: ")
+    for s in students:
+        if name == s.get_name():
+            index = student_names.index(name)
+            del students[index]
+            del student_names[index]
+
 # Import all students from csv
 generate_students()
 
@@ -168,10 +181,19 @@ while run_program == True:
     print("2. Search for student")
     print("3. Get class list")
     print("4. Add student")
-    print("5. Quit program")
+    print("5. Delete student")
+    print("6. Quit program")
     selection = int(input())
     if selection == 1:
         display_all()
     elif selection == 2:
         search()
+    elif selection == 3:
+        class_search()
+    elif selection == 4:
+        add_student()
+    elif selection == 5:
+        delete_student()
+    else:
+        run_program = False
     
